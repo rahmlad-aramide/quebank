@@ -23,7 +23,7 @@ export default function HomeScreen() {
         <StyledText className="text-white">Open up App.js to start working on your app!</StyledText>
       </StyledView>
       <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
+          <ThemedText type="title">Welcome!</ThemedText>
         <HelloWave />
       </ThemedView>
       <ThemedView style={styles.stepContainer}>

@@ -5,7 +5,16 @@ module.exports = {
     "./constants/**/*.{js,jsx,ts,tsx}"
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        Montserrat: 'Montserrat'
+      },
+      colors: {
+        primary: '#FBB911' /* Yellow */,
+        secondary: '#D4281C' /* Red */,
+        tertiary: '#E67C30' /* Gold */,
+      }
+    },
   },
   plugins: [],
 };
