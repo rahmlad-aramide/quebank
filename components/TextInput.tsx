@@ -13,6 +13,7 @@ interface ITextInput {
   onBlur?:
     | ((e: NativeSyntheticEvent<TextInputFocusEventData>) => void)
     | undefined;
+    secureTextEntry?: boolean;
     rest?: any;
 }
 export const TextInput: React.FC<ITextInput> = ({
@@ -21,6 +22,7 @@ export const TextInput: React.FC<ITextInput> = ({
   onChange,
   onFocus,
   onBlur,
+  secureTextEntry = false,
   rest
 }) => {
   return (
@@ -31,6 +33,7 @@ export const TextInput: React.FC<ITextInput> = ({
       onChangeText={onChange}
       onFocus={onFocus}
       onBlur={onBlur}
+      secureTextEntry={secureTextEntry}
       {...rest}
     />
   );
