@@ -1,11 +1,14 @@
 import React from 'react';
 import { StyledText, StyledTouchableOpacity, StyledView } from './StyledComponents';
+import { GestureResponderEvent } from 'react-native';
 
 type ButtonProps = {
   children: React.ReactNode;
   variant?: 'text' | 'filled' | 'outlined';
   color?: 'black'| 'gold';
   icon?: React.ReactNode;
+  wfit?: boolean;
+  onPress?: ((event: GestureResponderEvent) => void) | undefined
 };
 
 export const TouchableOpacity: React.FC<ButtonProps> = ({
@@ -13,17 +16,19 @@ export const TouchableOpacity: React.FC<ButtonProps> = ({
   variant = 'filled',
   color= 'black',
   icon,
+  wfit = false,
+  onPress
 }) => {
   
   const getButtonStyle = () => {
     switch (variant) {
       case 'text':
-        return 'bg-transparent';
+        return `bg-transparent mt-1 h-fit ${wfit? 'mt-0 ml-1': 'mt-1'}`;
       case 'outlined':
-        return 'border border-primary bg-transparent';
+        return 'border border-primary bg-transparent h-[42px] mt-2.5';
       case 'filled':
       default:
-        return 'bg-primary';
+        return 'bg-primary h-[42px] mt-2.5';
     }
   };
 
@@ -40,7 +45,8 @@ export const TouchableOpacity: React.FC<ButtonProps> = ({
 
   return (
     <StyledTouchableOpacity
-      className={`h-[42px] w-full rounded-[10px] mt-2.5 flex flex-row items-center justify-center ${getButtonStyle()}`}
+    onPress={onPress}
+      className={`${wfit? 'w-fit': 'w-full'} rounded-[10px] flex flex-row items-center justify-center ${getButtonStyle()}`}
     >
       {icon && <StyledView className="mr-2">{icon}</StyledView>}
       <StyledText className={`font-bold text-sm text-center ${getTextStyle()}`}>
